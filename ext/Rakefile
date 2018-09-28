@@ -1,0 +1,33 @@
+require_relative '../lib/darknet/version'
+
+version = Darknet::VERSION
+archive_path = "darknet-#{version}.tar.gz"
+source_path = "darknet-#{version}"
+prefix = ENV['PREFIX'] || File.dirname(__dir__)
+
+task :fetch do
+	url = "https://github.com/madleech/darknet/archive/#{version}.tar.gz"
+
+	unless File.exist? archive_path
+		sh "wget #{url} -O #{archive_path}"
+	end
+end
+
+task :extract do
+	unless File.exist? source_path
+		sh "tar -xvf #{archive_path}"
+	end
+end
+
+task :build do
+	Dir.chdir source_path do
+		sh "make"
+	end
+end
+
+task :clean do
+	FileUtils.rm_rf archive_path
+	FileUtils.rm_rf source_path
+end
+
+task :default => [:fetch, :extract, :build]
