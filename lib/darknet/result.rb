@@ -5,7 +5,6 @@ require 'json'
 module Darknet
   class Results < Array
     def self.parse(rows)
-      puts rows.inspect
       # rows of data like:
       # {"row": 0, "coords": [...], "labels": {"truck": 0.77}}
       # {"row": 1, "coords": [...], "labels": {"car": 0.38, "truck": 0.68}}
