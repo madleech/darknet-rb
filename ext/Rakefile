@@ -23,7 +23,7 @@ task :build do
 	Dir.chdir source_path do
 		sh "make"
 	end
-	FileUtils.mv source_path compiled_path
+	FileUtils.mv source_path, compiled_path
 end
 
 task :clean do
