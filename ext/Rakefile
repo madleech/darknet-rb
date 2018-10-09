@@ -1,5 +1,4 @@
-require_relative '../lib/darknet/version'
-require_relative '../lib/darknet/dir'
+require_relative '../lib/darknet'
 
 version = Darknet::VERSION
 archive_path = "darknet-#{version}.tar.gz"
