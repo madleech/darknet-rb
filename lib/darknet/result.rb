@@ -18,9 +18,7 @@ module Darknet
 
     # just limit to labels we want
     def limit_to(labels)
-      self
-        .collect { |row| row.labels.select { |label, probability| labels.include? label } }
-        .select { |row| row.any? }
+      self.select { |row| (row.labels.keys & labels).any? }
     end
   end
 
