@@ -13,8 +13,8 @@ module Darknet
           Result.new(
             label: match[1],
             confidence: match[2].to_f / 100,
-            x: match[3].to_i,
-            y: match[4].to_i,
+            left: match[3].to_i,
+            top: match[4].to_i,
             width: match[5].to_i,
             height: match[6].to_i,
           )
@@ -34,16 +34,16 @@ module Darknet
   class Result
     attr_accessor :label
     attr_accessor :confidence
-    attr_accessor :x
-    attr_accessor :y
+    attr_accessor :left
+    attr_accessor :top
     attr_accessor :width
     attr_accessor :height
 
-    def initialize(label:, confidence:, x:, y:, width:, height:)
+    def initialize(label:, confidence:, left:, top:, width:, height:)
       @label = label
       @confidence = confidence
-      @x = x
-      @y = y
+      @left = left
+      @top = top
       @width = width
       @height = height
     end
