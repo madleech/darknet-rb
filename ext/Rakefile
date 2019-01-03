@@ -6,7 +6,7 @@ source_path = "darknet-#{version}"
 compiled_path = Darknet.dir
 
 task :fetch do
-	url = "https://github.com/madleech/darknet/archive/#{version}.tar.gz"
+	url = "https://github.com/AlexeyAB/darknet/archive/#{version}.tar.gz"
 
 	unless File.exist? archive_path
 		sh "wget #{url} -O #{archive_path}"

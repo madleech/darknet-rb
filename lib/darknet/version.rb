@@ -1,3 +1,3 @@
 module Darknet
-  VERSION = "2018-10-27"
+  VERSION = "527578744b46666fb5cd42393bf9e1fa9af126ee"
 end
