@@ -1,9 +1,15 @@
+require 'tmpdir'
 require_relative '../lib/darknet'
 
 version = Darknet::VERSION
+build_dir = Dir.mktmpdir("darknet-build")
 archive_path = "darknet-#{version}.tar.gz"
 source_path = "darknet-#{version}"
 compiled_path = Darknet.dir
+
+task :build_dir do
+	Dir.chdir build_dir
+end
 
 task :fetch do
 	url = "https://github.com/AlexeyAB/darknet/archive/#{version}.tar.gz"
@@ -21,7 +27,7 @@ end
 
 task :build do
 	Dir.chdir source_path do
-		sh "make"
+		sh "make OPENMP=1"
 	end
 	FileUtils.mv source_path, compiled_path
 end
@@ -29,6 +35,7 @@ end
 task :clean do
 	FileUtils.rm_rf archive_path
 	FileUtils.rm_rf source_path
+	FileUtils.rm_rf build_dir
 end
 
-task :default => [:fetch, :extract, :build]
+task :default => [:build_dir, :fetch, :extract, :build]

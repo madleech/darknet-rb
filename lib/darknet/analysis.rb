@@ -31,7 +31,7 @@ module Darknet
       end
 
       # run analysis
-      Open3.popen3("#{Darknet.dir}/darknet", 'detector', 'test', data_file, config_file, weights_file, @filename, '-thresh', @threshold.to_s, chdir: dir) do |stdin, stdout, stderr, wait|
+      Open3.popen3("#{Darknet.dir}/darknet", 'detector', 'test', data_file, config_file, weights_file, @filename, '-thresh', @threshold.to_s, '-dont_show', '-ext_output', chdir: dir) do |stdin, stdout, stderr, wait|
         # check response code
         if wait.value.exitstatus.zero?
           Results.parse stdout.read
