@@ -3,7 +3,7 @@ require_relative 'lib/darknet/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "darknet-rb"
-  spec.version       = Darknet::VERSION
+  spec.version       = "1.0.0"
   spec.authors       = ["Michael Adams"]
   spec.email         = ["michael@michaeladams.org"]
 
